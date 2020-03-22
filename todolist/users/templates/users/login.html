@@ -1,0 +1,18 @@
+{% extends 'todolist_app/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Hi {{user.username}}</h1>
+    <small>You are logged in now.</small>
+{% else %}    
+<div style="display: table;margin-left: auto;margin-right: auto;margin-top: 200;">
+    <form style="display: table;margin-left: auto;margin-right: auto;" method="POST">
+        {% csrf_token %}
+        <h2>Welcome Back, Login Now!</h2>
+        {{form.as_p}}
+        <p style="display: table;margin-left: auto;margin-right: auto;"><input type="submit" value="LOGIN"></p>
+    </form>
+</div>    
+{% endif %}       
+{% endblock content %}

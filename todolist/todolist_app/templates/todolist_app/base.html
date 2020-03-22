@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist_app/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+    {% block link %}{% endblock link %}
+    <title>TO DO LIST</title>
+</head>
+<body style="font-family: 'Rubik', sans-serif;">
+
+  <!-- navbar -->
+<nav class="navbar">
+  
+    <div class="container">
+      
+      <h1 class="logo" style="color: white;">MY TO DO LIST . . .</h1>
+      <ul class="nav nav-right">
+        
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'list' %}">My List</a></li>
+          <li><a href="{% url 'user-home' %}">Profile</a></li>
+          <li><a href="{% url 'add' %}">Add</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'first' %}">Home</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Sign Up</a></li>  
+        {% endif %}
+
+    </div>
+    
+  </nav> 
+    {% if user.is_authenticated %}
+      <h3 style="text-align: right;padding-right: 20px;">Current User : <small>{{user.username}}</small></h3>
+    {% endif %}
+
+    {% block content%}{% endblock content %}
+
+
+ </body>
+</html>

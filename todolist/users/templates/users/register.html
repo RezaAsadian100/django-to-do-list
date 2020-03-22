@@ -1,0 +1,11 @@
+{% extends 'todolist_app/base.html' %}
+
+{% block content %}
+    <form  style="display: table;margin-left: auto;margin-right: auto;"  method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+
+        <input type="submit" value="Confirm">
+    </form>
+
+{% endblock content %}

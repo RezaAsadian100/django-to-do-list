@@ -1,0 +1,14 @@
+{% extends 'todolist_app/base.html' %}
+
+
+{% block content %} 
+    <div style="display: table; margin-left: 30px; margin-right: auto;margin-top: 20px;">
+        <h1>TITLE: <small>{{object.title}}</small></h1>
+        <h2>CONTENT: <small>{{object.content}}</small></h2>
+        <h2>AUTHOR: <small>{{object.owner}}</small></h2>
+        
+
+        <a href="{% url 'list' %}">back</a>
+        
+    </div>    
+{% endblock content %}    

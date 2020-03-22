@@ -1,0 +1,24 @@
+{% extends 'todolist_app/base.html' %}
+{% block content %}            
+    <div style="display: table;margin-right: auto;margin-left: auto;">
+        {% if todos %}
+            {% for i in todos %}
+                <div style="width:600px;border: solid 1px black;padding-left: 15px;padding-right: 15px;scroll-padding-top: 5px;margin-bottom: 30px;">
+                    <a href="{% url 'detail' i.pk %}"><h3 style="text-align: center;"><small>{{i.title}}</small></h3></a> 
+                    <h3>content: <small>{{i.content}}</small></h3>
+                    <h5 style="text-align: right;">Lastest update: {{i.date_edited}}</h5>
+                    <div>
+                        <a href="{% url 'detail' i.pk %}">Detail </a>
+                        <a style="float: right;" href="{% url 'delete' i.pk %}"> Delete </a>
+                        <a href="{% url 'edit' i.pk %}"> Edit</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Your List is empty.
+                
+            </h2>    
+        {% endif %}    
+        
+    </div>    
+{% endblock content %}    

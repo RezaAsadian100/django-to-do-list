@@ -1,0 +1,22 @@
+{% extends 'todolist_app/base.html' %}
+
+
+{% block content %}    
+    <div style="display: table; margin-left: auto; margin-right: auto;margin-top: 20px;text-align: center;" >    
+      
+        {% if user.is_authenticated %}    
+            <h1>Hi {{user.username}}</h1>
+            <p>You are loggend in</p>
+
+        {% else %}
+        
+            <div>
+                <h1>To Do List Web Application</h1>
+                You must sign up to use this application.
+            </div>
+        {% endif %}
+
+    </div>   
+    
+    
+{% endblock content %}    
